@@ -24,8 +24,7 @@ def gen_domain(lenght):
 
 def match_tld(func, tld):
     for l in func:
-        for e in tld:
-            yield l[0]+'.'+e
+        yield l[0]+'.'+tld
 
 class MongoObj:
     """
