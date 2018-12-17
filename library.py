@@ -1,7 +1,7 @@
 """
 All the main atributes classes are defined here
 """
-import requests
+import requests, soket
 import pymongo
 import itertools, string
 from pyquery import PyQuery
