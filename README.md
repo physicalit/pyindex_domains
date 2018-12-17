@@ -5,6 +5,6 @@
 
 # To do
 
-* implement initial paralle processing
-* parallel processing more powerful, taking in account the waiting time for requests
+* better optimization for faster parallel processing needed...
 * parse html from site
+* also issue: gethostbyname() does not support IPv6 name resolution, and getaddrinfo() should be used instead for IPv4/v6 dual stack support.

@@ -82,8 +82,11 @@ def gen_req(url):
             continue
 
         if result.status_code == 200:
-            query = PyQuery(result.text)
-            text = query.text()
+            try:
+                query = PyQuery(result.text)
+                text = query.text()
+            except:
+                pass
         else:
             text = "HTTP code: {}".format(result.status_code)
 
