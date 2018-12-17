@@ -5,7 +5,13 @@ import requests
 import pymongo
 import itertools, string
 from pyquery import PyQuery
-# from lxml import etree
+
+def hostname_resolves(hostname):
+    try:
+        socket.gethostbyname(hostname)
+        return 0
+    except socket.error:
+        return 1
 
 def gen_domain(lenght):
     """
@@ -19,7 +25,7 @@ def gen_domain(lenght):
 def match_tld(func, tld):
     for l in func:
         for e in tld:
-            yield 'https://'+l[0]+'.'+e
+            yield l[0]+'.'+e
 
 class MongoObj:
     """
@@ -68,9 +74,12 @@ class MongoObj:
 
 def gen_req(url):
     for l in url:
-        try:
-            result = requests.get(l, timeout=3)
-        except:
+        if hostname_resolves(l) == 0:
+            try:
+                result = requests.get("https://"+l, timeout=3)
+            except:
+                continue
+        else:
             continue
 
         if result.status_code == 200:

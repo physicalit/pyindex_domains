@@ -1,6 +1,6 @@
 #!/bin/env python3
 
-import multiprocessing
+from multiprocessing import Process
 from json import load
 from library import  MongoObj, gen_domain, match_tld, gen_req
 
