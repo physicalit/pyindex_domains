@@ -89,5 +89,9 @@ def gen_req(url):
                 pass
         else:
             text = "HTTP code: {}".format(result.status_code)
-
-        yield { 'status': result.status_code, 'url': l, 'data': text}
+        try:
+            yield { 'status': result.status_code, 'url': l, 'data': text}
+        except:
+            yield { 'status': result.status_code, 'url': l, 'data': text}
+        else:
+            continue
